@@ -14,28 +14,46 @@
     <button  style="text-transform:uppercase;padding:20px;border:2px solid black;background-color: brown;color:white"  onclick="shareData()">SHARE</button>
 </div>
     <script>
-    //     var file = new File([blob], "Nishi's Resume (5)", {type: 'application/pdf'});
-    // var filesArray = [file];
-        function shareData()
-        {
-        if (navigator.share!==undefined) {
-  navigator.share({
+        var file = new File([blob], "obama-bio)", {type: 'application/pdf'});
+    var filesArray = [file];
+//         function shareData()
+//         {
+//         if (navigator.share!==undefined) {
+//   navigator.share({
     
+//     title: 'Pictures',
+//     text: 'Our Pictures.',
+//   })
+//   .then(() =>{
+//   console.log('Share was successful.');
+//       document.body.textContent="share"
+//   })
+//   .catch((error) => {
+//        document.body.textContent="not able to share";
+//       console.log('Sharing failed', error)});
+// } else {
+//     document.body.textContent="not able to share";
+//       console.log(`Your system doesn't support sharing files.`);
+// }
+//         }
+        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+  navigator.share({
+    files: filesArray,
     title: 'Pictures',
     text: 'Our Pictures.',
   })
-  .then(() =>{
-  console.log('Share was successful.');
-      document.body.textContent="share"
-  })
-  .catch((error) => {
-       document.body.textContent="not able to share";
-      console.log('Sharing failed', error)});
+  .then(() =>{ 
+      document.body.textContent="shared successfull";
+      console.log('Share was successful.')}
+       )
+  .catch(
+      (error) => {
+          document.body.textContent="shared unsuccessfull";
+          console.log('Sharing failed', error)}
+  );
 } else {
-    document.body.textContent="not able to share";
-      console.log(`Your system doesn't support sharing files.`);
+  console.log(`Your system doesn't support sharing files.`);
 }
-        }
     </script>
 </body>
 </html>

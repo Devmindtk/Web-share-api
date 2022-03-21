@@ -49,7 +49,7 @@
        )
   .catch(
       (error) => {
-          document.body.textContent="shared unsuccessfull";
+          document.body.textContent=error;
           console.log('Sharing failed', error)}
   );
 } else {

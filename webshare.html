@@ -24,8 +24,13 @@
     title: 'Pictures',
     text: 'Our Pictures.',
   })
-  .then(() => console.log('Share was successful.'))
-  .catch((error) => console.log('Sharing failed', error));
+  .then(() =>{
+  console.log('Share was successful.');
+      document.body.textContent="share"
+  })
+  .catch((error) => {
+       document.body.textContent="not able to share";
+      console.log('Sharing failed', error)});
 } else {
     document.body.textContent="not able to share";
       console.log(`Your system doesn't support sharing files.`);

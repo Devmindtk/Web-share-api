@@ -14,20 +14,21 @@
     <button  style="text-transform:uppercase;padding:20px;border:2px solid black;background-color: brown;color:white"  onclick="shareData()">SHARE</button>
 </div>
     <script>
-        var file = new File([blob], "Nishi's Resume (5)", {type: 'application/pdf'});
-    var filesArray = [file];
+    //     var file = new File([blob], "Nishi's Resume (5)", {type: 'application/pdf'});
+    // var filesArray = [file];
         function shareData()
         {
-        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+        if (navigator.share!==undefined) {
   navigator.share({
-    files: filesArray,
+    
     title: 'Pictures',
     text: 'Our Pictures.',
   })
   .then(() => console.log('Share was successful.'))
   .catch((error) => console.log('Sharing failed', error));
 } else {
-  console.log(`Your system doesn't support sharing files.`);
+    document.body.textContent="not able to share";
+      console.log(`Your system doesn't support sharing files.`);
 }
         }
     </script>

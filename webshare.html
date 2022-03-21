@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;"> 
+        THE WEB SHARE API
+    </h1>
+    <div style="display:flex;justify-content:center;align-items: center;">
+    <button  style="text-transform:uppercase;padding:20px;border:2px solid black;background-color: brown;color:white"  onclick="shareData()">SHARE</button>
+</div>
+    <script>
+        var file = new File([blob], "Nishi's Resume (5)", {type: 'application/pdf'});
+    var filesArray = [file];
+        function shareData()
+        {
+        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+  navigator.share({
+    files: filesArray,
+    title: 'Pictures',
+    text: 'Our Pictures.',
+  })
+  .then(() => console.log('Share was successful.'))
+  .catch((error) => console.log('Sharing failed', error));
+} else {
+  console.log(`Your system doesn't support sharing files.`);
+}
+        }
+    </script>
+</body>
+</html>
